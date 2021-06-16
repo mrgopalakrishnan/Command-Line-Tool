@@ -15,14 +15,14 @@ jobs:
         git fetch --no-tags --prune --depth=1 origin +refs/heads/*:refs/remotes/origin/*
         git branch --remote --contains | grep origin/main
     - name: Set VERSION variable from tag
-      run: echo "VERSION=${GITHUB_REF/refs\/tags\/v/}" >> $GITHUB_ENV
+      run: echo ::set-env name=TAG_NAME::$(git describe --tags `git rev-list --tags --max-count=1`)
     - name: Build
-      run: dotnet build --configuration Release /p:Version=${VERSION}
+      run: dotnet build --configuration Release /p:Version=${env.TAG_NAME}
     - name: Test
-      run: dotnet test --configuration Release /p:Version=${VERSION} --no-build
+      run: dotnet test --configuration Release /p:Version=${env.TAG_NAME} --no-build
     - name: Pack
-      run: dotnet pack --configuration Release /p:Version=${VERSION} --no-build --output .
+      run: dotnet pack --configuration Release /p:Version=${env.TAG_NAME} --no-build --output .
     - name: Push
-      run: dotnet nuget push CommandLine.${VERSION}.nupkg --source https://nuget.pkg.github.com/mrgopalakrishnan/index.json --api-key ${GITHUB_TOKEN}
+      run: dotnet nuget push CommandLine.${env.TAG_NAME}.nupkg --source https://nuget.pkg.github.com/mrgopalakrishnan/index.json --api-key ${GITHUB_TOKEN}
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
