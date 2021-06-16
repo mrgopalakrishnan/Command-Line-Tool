@@ -23,6 +23,6 @@ jobs:
     - name: Pack
       run: dotnet pack --configuration Release /p:Version=${VERSION} --no-build --output .
     - name: Push
-      run: dotnet nuget push CommandLine.${VERSION}.nupkg --source https://nuget.pkg.github.com/mrgopalakrishnan/index.json --api-key ${GITHUB_TOKEN}
+      run: dotnet nuget push CommandLine.${VERSION}.nupkg --source https://www.nuget.org --api-key oy2hdrfxjpirzhytnbwarmdiiclwqseubjqatrqaehvcfa
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
