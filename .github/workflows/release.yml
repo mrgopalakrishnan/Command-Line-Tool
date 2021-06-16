@@ -22,6 +22,11 @@ jobs:
       run: dotnet test --configuration Release /p:Version=${VERSION} --no-build
     - name: Pack
       run: dotnet pack --configuration Release /p:Version=${VERSION} --no-build --output .
+    - name: Archive production artifacts
+      uses: actions/upload-artifact@v2
+      with:
+         name: nuget
+         path: CommandLine.${VERSION}.nupkg
     - name: Push
       run: dotnet nuget push CommandLine.${VERSION}.nupkg --source https://www.nuget.org --api-key oy2hdrfxjpirzhytnbwarmdiiclwqseubjqatrqaehvcfa
       env:
