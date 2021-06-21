@@ -13,12 +13,6 @@
             Description = description;
         }
         public ParamOptionAttribute(string[] aliases) => Aliases = aliases;
-
-        public ParamOptionAttribute(string aliases, string description)
-        {
-            Aliases = new[] { aliases };
-            Description = description;
-        }
         public ParamOptionAttribute(string[] aliases, string description, bool ismandatory)
         {
             Aliases = aliases;
@@ -30,7 +24,11 @@
             Aliases = aliases;
             IsMandatory = ismandatory;
         }
-
+        public ParamOptionAttribute(string aliases, string description)
+        {
+            Aliases = new[] { aliases };
+            Description = description;
+        }
         public ParamOptionAttribute(string aliases, string description, bool ismandatory)
         {
             Aliases = new[] { aliases };
@@ -39,5 +37,10 @@
         }
 
         public ParamOptionAttribute(string aliases) => Aliases = new[] { aliases };
+        public ParamOptionAttribute(string aliases, bool ismandatory)
+        {
+            Aliases = new[] { aliases };
+            IsMandatory = ismandatory;
+        }
     }
 }

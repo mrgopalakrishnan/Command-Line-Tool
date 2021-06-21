@@ -11,6 +11,10 @@ namespace CommandLineTool.Exceptions
         {
         }
 
+        public ConsoleAleadyRunningException(string message, Exception innerException) : base(message, innerException)
+        {
+        }
+
         private ConsoleAleadyRunningException(SerializationInfo serializationInfo, StreamingContext streamingContext) : base(serializationInfo, streamingContext)
         {
         }
