@@ -1,18 +1,26 @@
-using NUnit.Framework;
+﻿using AutoMoq;
+using CommandLineTool;
+using CommandLineTool.Exceptions;
+using Moq;
+using System;
+using System.Collections.Generic;
+using Xunit;
 
 namespace Unittests
 {
     public class CliTests
     {
-        [SetUp]
-        public void Setup()
+        [Fact]
+        public void TestMultipleInstanceNotAllowed()
         {
+            _ = new Cli(typeof(Mocks.MockApp));
+            _ = Assert.Throws<InstanceAlreadyExistException>(() => new Cli());
         }
 
-        [Test]
-        public void Test1()
+        [Fact]
+        public void TestAppAttributeMandatory()
         {
-            Assert.Pass();
+            _ = Assert.Throws<MissingAppAttributeException>(() => new Cli(typeof(Mocks.MockNotApp)));
         }
     }
 }

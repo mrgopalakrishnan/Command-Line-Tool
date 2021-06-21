@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CommandLine\CommandLine.csproj" />
+    <ProjectReference Include="..\CommandLineTool\CommandLineTool.csproj" />
   </ItemGroup>
 
 </Project>
