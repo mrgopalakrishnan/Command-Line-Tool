@@ -2,6 +2,14 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <Authors>Gopalakrishnan R</Authors>
+    <Company>GKR Tech</Company>
+    <Description>A simple way to create command line tools using .net console app</Description>
+    <PackageProjectUrl></PackageProjectUrl>
+    <RepositoryUrl>https://github.com/mrgopalakrishnan/Command-Line-Tool</RepositoryUrl>
+    <PackageReleaseNotes>First version</PackageReleaseNotes>
+    <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
   </PropertyGroup>
 
   <ItemGroup>
